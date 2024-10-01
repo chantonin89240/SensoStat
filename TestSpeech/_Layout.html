@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>SensoStat</title>
+
+		<link rel="stylesheet" href="styleSynthesis.css">
+		<!-- CDN -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	</head>
+	<body>
+		<!-- Barre de navigation -->
+		<!-- Template Bootstrap 5 -->
+		<nav class="navbar navbar-expand-lg navbar-light bg-white" >
+			<div class="container-fluid">
+				<img class="navbar-brand img-fluid ms-3 " title="Accueil SensoStat" alt="SensoStat" href="#" src="./logo_sensostap.png">	
+				<button class="navbar-toggler ms-auto me-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+					<ul class="navbar-nav ms-auto me-0 mb-2 mb-lg-0">
+						<li class="nav-item ms-auto me-0">
+							<a class="nav-link" aria-current="page" asp-area="" asp-controller="Home" asp-action="Index"  asp-route-pageNumber="1">
+								<i class="fas fa-home"></i>
+								<span >Accueil</span>
+							</a>
+						</li>
+						<li class="nav-item dropdown ms-auto me-0">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								<i class="fas fa-tools"></i>
+								<span >Administration</span>
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+								<li><a class="dropdown-item" asp-area="administration" asp-controller="Artiste" asp-action="Index"><i class="fas fa-users me-1"></i>Séances</a></li>
+								<li><a class="dropdown-item" asp-area="administration" asp-controller="commentaire" asp-action="Index"><i class="fas fa-comments me-1"></i>Publication</a></li>
+								<li><a class="dropdown-item" asp-area="administration" asp-controller="Dashboard" asp-action="Index"><i class="fas fa-tachometer-alt me-1"></i>Tableau de bord</a></li>
+							</ul>
+						</li>
+						<li class="nav-item ms-auto me-0">
+							<a class="nav-link" asp-area="" asp-controller="Contact" asp-action="Contact">
+								<i class="far fa-user-circle fa-2x"></i>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<!-- Conteneur principal -->
+		<!-- Template Bootstrap 5 -->
+		<div class="container-fluid mb-5 p-4 bg-light h-auto" style="min-height: 700px;">
+
+			<div class="bg-secondary">	
+				<h1>Speech synthesiser</h1>
+			    <p>Entrez un texte dans la zone de saisie ci-dessous, sélectionnez une voix dans la liste déroulante, et cliquez sur Lecture</p>		    
+			    <form>
+			    <input type="text" class="txt" value="Comment avez vous trouver le goût salé de ce produit? C'est à vous maintenant.">
+					<p class="textToSpeech">oui ou non ?</p>
+			    <div>
+			      <label for="rate">Rate</label><input type="range" min="0.5" max="2" value="1" step="0.1" id="rate">
+			      <div class="rate-value">1</div>
+			      <div class="clearfix"></div>
+			    </div>
+			    <div>
+			      <label for="pitch">Pitch</label><input type="range" min="0" max="2" value="1" step="0.1" id="pitch">
+			      <div class="pitch-value">1</div>
+			      <div class="clearfix"></div>
+			    </div>
+			    <div>
+			    	<select>
+
+			    	</select>
+			    </div>
+			    
+			    <div class="controls">
+			      <button class="btn btn-primary" id="play" type="submit">Lecture</button>
+			    </div>
+			    </form>
+			    
+			</div>
+
+			<div class="bg-warning">
+				<h1>Dictée du mot clé "lecture"</h1>
+			    <p class="hints"></p>
+				<div>
+			        <p class="output"><em>...diagnostic messages</em></p>
+			    </div>
+			</div>
+			
+			<div class="container mb-3">
+			  <div draggable="true" class="box">A</div>
+			  <div draggable="true" class="box">B</div>
+			  <div draggable="true" class="box">C</div>
+			</div>
+
+			<ul class="container mb-3 list-group">
+				<li name="el-1" draggable="true" class="box list-group-item instruction">A</li>
+				<li name="el-2" draggable="true" class="box list-group-item question">B</li>
+				<li name="el-3" draggable="true" class="box list-group-item instruction">C</li>
+			</ul>
+
+			<div class="bg-info">
+				<h1>Dictée de réponse</h1>
+				<a id="btnAnswer" class="btn btn-primary col-2 d-flex justify-content-center m-auto">Enregistrer une réponse</a>
+
+			    <div>
+			        <p class="outputResponse">...diagnostic messages</p>        
+			    </div>
+			    <div class="p-5">
+			    	<h2 class="d-flex justify-content-center" id="result">...</h2>
+			    </div>
+			</div>
+
+		</div>
+		<!-- Pied de page -->
+		<!-- Template Bootstrap 5 -->
+		<nav class="navbar fixed-bottom navbar-light bg-white">
+			<div class="container-fluid d-flex justify-content-center">
+				<a class="navbar-brand h6 text-wrap fs-6" asp-area="" asp-controller="Home" asp-action="Index" asp-route-pageNumber="1">SensoStat - Tous droits réservés © SensoStat 2022 </a>
+			</div>
+		</nav>
+	</body>
+
+	<script src="scriptSynthesis.js"></script>
+	<script src="scriptKeyword.js"></script> 
+	<script src="scriptRecognition.js"></script>
+	<!-- <script type="text/javascript" src="recognitionSimple.js"></script> -->
+	<script src="scriptDragDrop.js"></script>
+
+</html>
